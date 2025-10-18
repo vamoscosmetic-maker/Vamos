@@ -316,7 +316,7 @@ function loadGoalOptions(skinType) {
         option.className = 'goal-option';
         option.onclick = () => selectGoal(tonerName, toner.benefits);
         option.innerHTML = `
-            <div class="option-icon">🎯</div>
+            <div class="option-icon"></div>
             <span>${tonerName}</span>
             <small>${toner.benefits.substring(0, 60)}...</small>
         `;
@@ -427,4 +427,5 @@ function openWhatsApp(message) {
     const whatsappNumber = '923706236674'; // Replace with your actual number
     
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+
 }
