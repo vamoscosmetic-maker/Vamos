@@ -1182,6 +1182,8 @@ h1, h2, h3, h4, .logo-main {
     display: flex;
     align-items: center;
     gap: 0.3rem;
+    border-radius: 8px;
+
 }
 
 .whatsapp-btn:hover {
@@ -1224,4 +1226,5 @@ h1, h2, h3, h4, .logo-main {
     }
 
 }
+
 
