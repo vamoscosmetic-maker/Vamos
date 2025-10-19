@@ -1,4 +1,4 @@
-// Complete toner data with skin types, benefits, and prices
+// Complete toner data with skin types, benefits, and prices// Complete toner data with skin types, benefits, and prices
 const tonerData = {
     "50ml": [
         {
@@ -96,6 +96,12 @@ const tonerData = {
             benefits: "Nighttime calming, overnight nourishment & repair",
             skinType: "Dry / Sensitive / Normal",
             price: "610"
+        },
+        {
+            uniqueName: "TightRadiance",
+            benefits: "Gently tightens pores, firms the skin, and brightens dull complexions. Helps reduce dark spots while keeping skin hydrated and fresh.",
+            skinType: "All Skin Types — especially ideal for Normal to Oily skin",
+            price: "630"
         }
     ],
     "100ml": [
@@ -194,6 +200,12 @@ const tonerData = {
             benefits: "Nighttime calming, overnight nourishment & repair",
             skinType: "Dry / Sensitive / Normal",
             price: "850"
+        },
+        {
+            uniqueName: "TightRadiance",
+            benefits: "Gently tightens pores, firms the skin, and brightens dull complexions. Helps reduce dark spots while keeping skin hydrated and fresh.",
+            skinType: "All Skin Types — especially ideal for Normal to Oily skin",
+            price: "920"
         }
     ]
 };
@@ -201,11 +213,11 @@ const tonerData = {
 // Skin type to toner mapping
 const skinTypeMapping = {
     'dry': ['RoseMist Hydrate', 'SunSoothe', 'SereniSkin', 'ShieldBoost', 'NightRevive', 'MoonCalm'],
-    'oily': ['MatteBalance', 'ToneBalance', 'AquaChill', 'TargetBright', 'GlowBerry', 'FreshKick'],
-    'combination': ['MatteBalance', 'ToneBalance', 'AquaChill', 'TargetBright', 'GlowBerry', 'FreshKick'],
+    'oily': ['MatteBalance', 'ToneBalance', 'AquaChill', 'TargetBright', 'GlowBerry', 'FreshKick', 'TightRadiance'],
+    'combination': ['MatteBalance', 'ToneBalance', 'AquaChill', 'TargetBright', 'GlowBerry', 'FreshKick', 'TightRadiance'],
     'sensitive': ['RoseMist Hydrate', 'SunSoothe', 'SereniSkin', 'ShieldBoost', 'MoonCalm'],
-    'normal': ['RoseMist Hydrate', 'GlowBerry', 'LumiFade', 'PrepPerfection', 'AquaChill', 'RadiantDew', 'NightRevive', 'FreshKick', 'SunriseGlow', 'MoonCalm'],
-    'all': ['GlowBerry', 'LumiFade', 'PrepPerfection', 'AquaChill', 'RadiantDew', 'TargetBright', 'FreshKick', 'SunriseGlow']
+    'normal': ['RoseMist Hydrate', 'GlowBerry', 'LumiFade', 'PrepPerfection', 'AquaChill', 'RadiantDew', 'NightRevive', 'FreshKick', 'SunriseGlow', 'MoonCalm', 'TightRadiance'],
+    'all': ['GlowBerry', 'LumiFade', 'PrepPerfection', 'AquaChill', 'RadiantDew', 'TargetBright', 'FreshKick', 'SunriseGlow', 'TightRadiance']
 };
 
 // User selections for custom creation
@@ -218,20 +230,8 @@ let userSelections = {
 // Initialize the website
 document.addEventListener('DOMContentLoaded', function() {
     loadProducts('50ml');
-    setupEventListeners();
+    showStep(1);
 });
-
-// Setup event listeners
-function setupEventListeners() {
-    // Size toggle buttons
-    document.querySelectorAll('.toggle-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            loadProducts(this.dataset.size + 'ml');
-        });
-    });
-}
 
 // Load products based on selected size
 function loadProducts(size) {
@@ -259,6 +259,15 @@ function loadProducts(size) {
         `;
         productsGrid.appendChild(card);
     });
+}
+
+// Switch between 50ml and 100ml views
+function switchSize(size) {
+    const buttons = document.querySelectorAll('.toggle-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    event.target.classList.add('active');
+    loadProducts(size + 'ml');
 }
 
 // Scroll to section
@@ -316,7 +325,7 @@ function loadGoalOptions(skinType) {
         option.className = 'goal-option';
         option.onclick = () => selectGoal(tonerName, toner.benefits);
         option.innerHTML = `
-            <div class="option-icon"></div>
+            <div class="option-icon">V</div>
             <span>${tonerName}</span>
             <small>${toner.benefits.substring(0, 60)}...</small>
         `;
@@ -346,8 +355,8 @@ function updatePricePreviews(goalName) {
     const toner50ml = tonerData['50ml'].find(t => t.uniqueName === goalName);
     const toner100ml = tonerData['100ml'].find(t => t.uniqueName === goalName);
     
-    document.getElementById('price50ml').textContent = toner50ml.price;
-    document.getElementById('price100ml').textContent = toner100ml.price;
+    document.getElementById('price50ml').textContent = toner50ml ? toner50ml.price : '-';
+    document.getElementById('price100ml').textContent = toner100ml ? toner100ml.price : '-';
 }
 
 function selectSize(size) {
@@ -423,9 +432,9 @@ Please confirm availability and payment details.`;
 }
 
 function openWhatsApp(message) {
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = '923706236674'; // Replace with your actual number
+    // REPLACE THIS WITH YOUR ACTUAL WHATSAPP NUMBER
+    const whatsappNumber = '923706236674'; 
     
+    const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
-
 }
