@@ -1,4 +1,4 @@
-// Complete toner data with skin types, benefits, and prices// Complete toner data with skin types, benefits, and prices
+// Complete toner data with skin types, benefits, and prices
 const tonerData = {
     "50ml": [
         {
@@ -440,15 +440,27 @@ function openWhatsApp(message) {
 }
 // Mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // ... your existing code ...
-    
-    // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            const isDisplayed = navLinks.style.display === 'flex';
+            navLinks.style.display = isDisplayed ? 'none' : 'flex';
+            
+            // Position the menu properly on mobile
+            if (window.innerWidth <= 768) {
+                if (!isDisplayed) {
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.right = '0';
+                    navLinks.style.backgroundColor = 'rgba(35, 28, 28, 0.98)';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.padding = '2rem';
+                    navLinks.style.gap = '1.5rem';
+                }
+            }
         });
     }
     
@@ -465,6 +477,10 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             navLinks.style.display = 'flex';
+            navLinks.style.position = 'static';
+            navLinks.style.backgroundColor = 'transparent';
+            navLinks.style.flexDirection = 'row';
+            navLinks.style.padding = '0';
         } else {
             navLinks.style.display = 'none';
         }
