@@ -370,17 +370,19 @@ h1, h2, h3, h4, .logo-main {
 }
 
 .product-card .order-btn {
-    width: 100%;
+    width: 70%;
     background: var(--charcoal);
     color: var(--cream);
     border: none;
-    padding: 0.9rem;
+    padding: 0.8rem;
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.3rem;
+    letter-spacing: 0.18rem;
     border-radius: 6rem;
+    align-content: center;
+    align-self: center;
 }
 
 .product-card .order-btn:hover {
@@ -897,3 +899,4 @@ h1, h2, h3, h4, .logo-main {
         font-size: 16px;
     }
 }
+
