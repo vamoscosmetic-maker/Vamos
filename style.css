@@ -564,6 +564,9 @@ h1, h2, h3, h4, .logo-main {
     color: var(--charcoal);
     margin-bottom: 0.8rem;
     font-weight: 400;
+    align-content: first baseline;
+    align-self: first baseline;
+    align-items: first baseline;
 }
 
 .product-benefits {
@@ -899,4 +902,5 @@ h1, h2, h3, h4, .logo-main {
         font-size: 16px;
     }
 }
+
 
