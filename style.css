@@ -236,7 +236,7 @@ h1, h2, h3, h4, .logo-main {
 }
 
 .container {
-    max-width: 1200rem;
+    max-width: 1200px; /* Fixed typographic measurement error here */
     margin: 0 auto;
     width: 100%;
     padding: 0 1rem;
@@ -291,20 +291,20 @@ h1, h2, h3, h4, .logo-main {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     width: 100%;
     align-items: stretch;
-
 }
 
+/* FIXED BOX LAYOUT WITH SUBTLE luxury CURVES */
 .product-card {
     background: var(--cream);
-    border: 1rem solid var(--border);
-    padding: 1.5rem;
+    border: 1px solid var(--border); /* Made clean hairline border instead of 1rem */
+    padding: 2rem 1.5rem; /* Better breathing space for text */
     transition: all 0.3s ease;
     position: relative;
-    border-radius: 10rem;
+    border-radius: 12px; /* Turned 10rem into clean 12px modern corners */
     width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -315,8 +315,8 @@ h1, h2, h3, h4, .logo-main {
 
 .product-card:hover {
     border-color: var(--gold);
-    transform: translateY(-2rem);
-    box-shadow: 0 4px 15px rgba(200, 169, 126, 0.1);
+    transform: translateY(-0.5rem); /* Softer translation layout adjustment */
+    box-shadow: 0 8px 24px rgba(200, 169, 126, 0.12);
 }
 
 .product-card h3 {
@@ -347,7 +347,7 @@ h1, h2, h3, h4, .logo-main {
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding-top: 1rem;
-    border-top: 1rem solid var(--border);
+    border-top: 1px solid var(--border); /* Adjusted dividing line layout thickness */
 }
 
 .price-option {
@@ -370,7 +370,7 @@ h1, h2, h3, h4, .logo-main {
 }
 
 .product-card .order-btn {
-    width: 70%;
+    width: 80%;
     background: var(--charcoal);
     color: var(--cream);
     border: none;
@@ -567,13 +567,6 @@ h1, h2, h3, h4, .logo-main {
     align-content: first baseline;
     align-self: first baseline;
     align-items: first baseline;
-}
-
-.product-benefits {
-    color: var(--taupe);
-    margin-bottom: 0.8rem;
-    line-height: 1.5;
-    font-size: 0.9rem;
 }
 
 .product-skin-type {
@@ -878,7 +871,7 @@ h1, h2, h3, h4, .logo-main {
     }
     
     .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 }
 
@@ -902,5 +895,3 @@ h1, h2, h3, h4, .logo-main {
         font-size: 16px;
     }
 }
-
-
