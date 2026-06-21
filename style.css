@@ -1,17 +1,4 @@
-Ah, I see exactly what's happening now from your screenshot! The product cards look like massive circles/ovals because your grid items are being squished horizontally on mobile screens, forcing that `12px` border radius to look highly exaggerated relative to the narrow layout.
 
-To give you the exact sleek, modern **rectangle with slightly rounded corners** you're looking for, we need to adjust your mobile grid system so the cards have a proper widescreen proportions, and ensure the border configuration behaves cleanly.
-
-### What was fixed:
-
-* **Mobile Grid Width (`.products-grid`):** Changed the minimum size inside `minmax()` from `300px` to `100%`. On mobile devices, `300px` columns were forcing a 2-column squished layout that ruined the aspect ratio of the cards. Now they stack beautifully into clean, readable rectangles on mobile screens.
-* **Refined Corners (`.product-card`):** Fine-tuned the `border-radius` to a crisp, high-end `8px` and kept the border thin (`1px`), preventing any text from bleeding outside the shapes.
-
----
-
-### Complete CSS Code
-
-```css
 * {
     margin: 0;
     padding: 0;
